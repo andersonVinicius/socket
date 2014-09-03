@@ -28,6 +28,7 @@ public class Server {
             //Recebe as mensagens dos clientes
             DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
             serverSocket.receive(receivePacket);
+            //teste verificar a sequencia decriptografada no servidor
             System.out.print("cipher:  ");
             for (int i = 0; i < receiveData.length; i++) {
                 System.out.print(new Integer(receiveData[i]) + " ");
@@ -37,12 +38,12 @@ public class Server {
             String sentence = cript.decrypt(receivePacket.getData());
             System.out.println("Recebido: " + sentence);
             //Responde ao mesmo IP e Porta do pacote recebido.
-            InetAddress IPAddress = receivePacket.getAddress();
-            int port = receivePacket.getPort();
-            String capitalizedSentence = sentence.toUpperCase();
-            sendData = capitalizedSentence.getBytes();
-            DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, IPAddress, port);
-            serverSocket.send(sendPacket);
+//            InetAddress IPAddress = receivePacket.getAddress();
+//            int port = receivePacket.getPort();
+//            String capitalizedSentence = sentence.toUpperCase();
+//            sendData = capitalizedSentence.getBytes();
+//            DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, IPAddress, port);
+//            serverSocket.send(sendPacket);
 
 //            for (int i = 0; i < receiveData.length; i++) {
 //                receiveData[i] = 0;
